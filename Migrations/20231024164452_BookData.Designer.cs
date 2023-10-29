@@ -4,6 +4,7 @@ using Lazar_Beatrice_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lazar_Beatrice_Lab2.Migrations
 {
     [DbContext(typeof(Lazar_Beatrice_Lab2Context))]
-    partial class Lazar_Beatrice_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20231024164452_BookData")]
+    partial class BookData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +26,11 @@ namespace Lazar_Beatrice_Lab2.Migrations
 
             modelBuilder.Entity("Lazar_Beatrice_Lab2.Models.Author", b =>
                 {
-                    b.Property<int>("AuthorID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AuthorID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<string>("AuthorName")
                         .IsRequired()
@@ -42,7 +44,7 @@ namespace Lazar_Beatrice_Lab2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AuthorID");
+                    b.HasKey("ID");
 
                     b.ToTable("Author");
                 });
@@ -77,7 +79,7 @@ namespace Lazar_Beatrice_Lab2.Migrations
 
                     b.HasIndex("PublisherID");
 
-                    b.ToTable("Book");
+                    b.ToTable("book");
                 });
 
             modelBuilder.Entity("Lazar_Beatrice_Lab2.Models.BookCategory", b =>

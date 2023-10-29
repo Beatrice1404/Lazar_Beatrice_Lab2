@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Lazar_Beatrice_Lab2.Data;
 using Lazar_Beatrice_Lab2.Models;
 
+
 namespace Lazar_Beatrice_Lab2.Pages.books
 {
     public class IndexModel : PageModel
@@ -18,17 +19,27 @@ namespace Lazar_Beatrice_Lab2.Pages.books
         {
             _context = context;
         }
-
-        public IList<book> book { get;set; } = default!;
-
-        public async Task OnGetAsync()
+        public IList<book> Book { get; set; }
+        public BookData BookD { get; set; }
+        public int BookID { get; set; }
+        public int CategoryID { get; set; }
+        public async Task OnGetAsync(int? id, int? categoryID)
         {
-            book = await _context.book
+            BookD = new BookData();
+
+            BookD.Books = await _context.Book
             .Include(b => b.Publisher)
+            .Include(b => b.BookCategories)
+            .ThenInclude(b => b.Category)
+            .AsNoTracking()
+            .OrderBy(b => b.Title)
             .ToListAsync();
-            if (_context.book != null)
+            if (id != null)
             {
-                book = await _context.book.ToListAsync();
+                BookID = id.Value;
+                book book = BookD.Books
+                .Where(i => i.ID == id.Value).Single();
+                BookD.Categories = book.BookCategories.Select(s => s.Category);
             }
         }
     }

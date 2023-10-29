@@ -1,4 +1,4 @@
-﻿namespace Lazar_Beatrice_Lab2.Pages
+﻿namespace Lazar_Beatrice_Lab2.Pagges
 {
     public class Authors
     {

@@ -14,8 +14,11 @@ namespace Lazar_Beatrice_Lab2.Data
         {
         }
 
-        public DbSet<Lazar_Beatrice_Lab2.Models.book> book { get; set; } = default!;
+        public DbSet<Lazar_Beatrice_Lab2.Models.book> Book { get; set; } = default!;
         public DbSet<Lazar_Beatrice_Lab2.Models.Publisher>? Publisher { get; set; }
+        public DbSet<Lazar_Beatrice_Lab2.Models.Category>? Category { get; set; }
+        public DbSet<Lazar_Beatrice_Lab2.Models.Author>? Author { get; set; }
+        public DbSet<BookCategory> BookCategory { get; set; }
 
     }
 }

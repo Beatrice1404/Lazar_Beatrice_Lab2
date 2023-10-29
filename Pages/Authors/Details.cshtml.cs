@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Lazar_Beatrice_Lab2.Data;
 using Lazar_Beatrice_Lab2.Models;
 
-namespace Lazar_Beatrice_Lab2.Pages.books
+namespace Lazar_Beatrice_Lab2.Pages.Authors
 {
     public class DetailsModel : PageModel
     {
@@ -19,23 +19,23 @@ namespace Lazar_Beatrice_Lab2.Pages.books
             _context = context;
         }
 
-      public book book { get; set; } = default!; 
+      public Author Author { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Book == null)
+            if (id == null || _context.Author == null)
             {
                 return NotFound();
             }
 
-            var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
-            if (book == null)
+            var author = await _context.Author.FirstOrDefaultAsync(m => m.AuthorID == id);
+            if (author == null)
             {
                 return NotFound();
             }
             else 
             {
-                book = book;
+                Author = author;
             }
             return Page();
         }
