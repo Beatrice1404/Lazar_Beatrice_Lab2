@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lazar_Beatrice_Lab2.Migrations
 {
     [DbContext(typeof(Lazar_Beatrice_Lab2Context))]
-    [Migration("20231024170840_BookCategory")]
-    partial class BookCategory
+    [Migration("20231031172306_RecoverDB")]
+    partial class RecoverDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,15 +26,11 @@ namespace Lazar_Beatrice_Lab2.Migrations
 
             modelBuilder.Entity("Lazar_Beatrice_Lab2.Models.Author", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("AuthorID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("AuthorName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AuthorID"), 1L, 1);
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -44,7 +40,7 @@ namespace Lazar_Beatrice_Lab2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("AuthorID");
 
                     b.ToTable("Author");
                 });

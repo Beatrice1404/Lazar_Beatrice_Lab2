@@ -19,10 +19,11 @@
                 <input asp-for="book.Title" class="form-control" />
                 <span asp-validation-for="book.Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="book.Author" class="control-label"></label>
-                <input asp-for="book.Author" class="form-control" />
-                <span asp-validation-for="book.Author" class="text-danger"></span>
+         <div class="form-group">
+                <label asp-for="book.AuthorID" class="control-label">Author</label>
+                <select asp-for="book.AuthorID" class="form-control" asp-items="ViewBag.AuthorID">
+                </select>
+                <span asp-validation-for="book.AuthorID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="book.Price" class="control-label"></label>
