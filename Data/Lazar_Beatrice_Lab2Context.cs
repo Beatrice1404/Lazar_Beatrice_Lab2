@@ -19,6 +19,8 @@ namespace Lazar_Beatrice_Lab2.Data
         public DbSet<Lazar_Beatrice_Lab2.Models.Category>? Category { get; set; }
         public DbSet<Lazar_Beatrice_Lab2.Models.Author>? Author { get; set; }
         public DbSet<BookCategory> BookCategory { get; set; }
+        public DbSet<Lazar_Beatrice_Lab2.Models.Borrowing>? Borrowing { get; set; }
+        public DbSet<Lazar_Beatrice_Lab2.Models.Member>? Member { get; set; }
 
     }
 }
